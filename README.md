@@ -27,7 +27,7 @@ CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 1
 ### Test on your own images:
 
 ### Training Scripts:
-We release all our training scripts to better reproduce our results and hopefully the folloing methods may benefit from our works.
+We release all our training scripts to help reproduce our results and hopefully the following methods may benefit from our works.
 #### OADDetv1
 ```
 
@@ -56,3 +56,16 @@ x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/m
 
 ## Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
+
+## Cite :
+If you find this repository useful, please cite:
+```
+@misc{AIM2020RealSR,
+  author = {Shuan Holmes},
+  title = {AIM2020-RealSR},
+  year = {2020},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/HolmesShuan/AIM2020-RealSR}},
+}
+```
