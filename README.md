@@ -6,9 +6,9 @@ Our solution consists of three basic models (**model ensemble**): OADDetv1, OADD
 
 <img src="./img/OADDet.jpg" width="500" height="250" />
 
-Our core modules are heavily borrowed from [DDet](https://github.com/ykshi/DDet), [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as less attention modules, skip connections and LeakyReLU.
+Our core modules are heavily borrowed from [DDet](https://github.com/ykshi/DDet), [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as fewer attention modules, skip connections and LeakyReLU.
 
-<img src="./img/OADDet_Network.jpg" width="500" height="500" />
+<img src="./img/OADDet_Network.jpg" width="370" height="370" />
 
 ## 2. Environment :
 We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
@@ -33,7 +33,7 @@ CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 1
 ### 3.2 Test on your own images:
 
 ### 3.3 Training Scripts:
-We release all our training scripts to help reproduce our results and hopefully the following methods may benefit from our works.
+We release all our training scripts to help reproduce our results and hopefully, the following methods may benefit from our works.
 #### 3.3.1 OADDetv1
 Trained on original AIM x2 dataset; Finetuned on washed AIM x2.
 ```
@@ -64,9 +64,9 @@ According to this [issue](https://competitions.codalab.org/forums/21376/3953/):
 > I found that many photos in the training dataset are not pixel-wise aligned. Actually, there are different types of misalignment: camera shift, moving objects (e.x. trees, grass).
 
 > However, looking at the dataset, I found that there are very large shifts in some crops. For example, 000012, 000016, 000018, 000021.
-There is also a color mismatch sometimes between LR and HR: for example 000022.
+There is also a colour mismatch sometimes between LR and HR: for example 000022.
 
-it seems that the official dataset is unsatisfactory. Therefore, we manually washed x2/x3/x4 datasets to obtain three subsets. There are about 300 damaged image pairs in each original dataset. The washed datasets are now public available:
+it seems that the official dataset is unsatisfactory. Therefore, we manually washed x2/x3/x4 datasets to obtain three subsets. There are about 300 damaged image pairs in each original dataset. The washed datasets are now publicly available:
 
 Dataset | Original number of images | Ours | Clean Image ID Download Link
 ------------ | ------------- | ------------- |  ------------
@@ -74,8 +74,12 @@ Dataset | Original number of images | Ours | Clean Image ID Download Link
 x3 | 19000 | 18643 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x3_clean_img_id.txt)
 x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x4_clean_img_id.txt)
 
-### 4.2 Washed x2+x3 Dataset :
+### 4.2 Washed x2+x3 Dataset (AIM_Washed_Large) :
+Though AIM2020 x2 dataset contains 19K real LR/HR pairs, our models still suffer from overfishing. In light of this, we use x3 LR/HR pairs to fine-tune x2 models. Specifically, we downsample x3 HR images to x2 size (i.e., `HR_img.resize(H//3*2, W//3*2)`), which generates a larger AIM x2 dataset with 37118 images, namely `AIM_washed_Large`. 
 
+This setting contributes to better visualization results on hard samples. Left subfigure is only trained on x2 washed and right subfigure is trained on x2+x3. However, the side-effect is a slight chromatism problem. 
+
+<img src="./img/cmp.jpg" width="500" height="225" />
 
 ### 4.3 ClipL1 Loss :
 To solve the noisy data problem, we propose a new loss function for CNN-based low-level computer vision tasks. As the name implies, ClipL1 Loss combines Clip function and L1 loss. `self.clip_min` sets the gradients of well-trained pixels to zeros and `clip_max` works as a noise filter. 
