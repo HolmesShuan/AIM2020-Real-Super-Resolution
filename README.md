@@ -74,7 +74,7 @@ Dataset | Original number of images | Ours | Clean Image ID Download Link
 x3 | 19000 | 18643 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x3_clean_img_id.txt)
 x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x4_clean_img_id.txt)
 
-### 4.2 Washed x2+x3 Dataset (AIM_Washed_Large) :
+### 4.2 Washed x2+x3 Dataset (AIM_washed_Large) :
 Though AIM2020 x2 dataset contains 19K real LR/HR pairs, our models still suffer from overfishing. In light of this, we use x3 LR/HR pairs to fine-tune x2 models. Specifically, we downsample x3 HR images to x2 size (i.e., `HR_img.resize(H//3*2, W//3*2)`), which generates a larger AIM x2 dataset with 37118 images, namely `AIM_washed_Large`. 
 
 This setting contributes to better visualization results on hard samples. Left subfigure is only trained on x2 washed and right subfigure is trained on x2+x3. However, the side-effect is a slight chromatism problem. 
