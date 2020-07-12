@@ -6,8 +6,9 @@ Our solution consists of three basic models (**model ensemble**): OADDetv1, OADD
 
 <img src="./img/OADDet.jpg" width="500" height="250" />
 
-Our core modules are heavily borrowed from [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as less attention modules, skip connections and LeakyReLU.
+Our core modules are heavily borrowed from [DDet](https://github.com/ykshi/DDet), [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as less attention modules, skip connections and LeakyReLU.
 
+<img src="./img/OADDet_Network.jpg" width="500" height="500" />
 
 ## 2. Environment :
 We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
