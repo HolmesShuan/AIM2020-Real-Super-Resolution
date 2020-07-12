@@ -1,5 +1,8 @@
 # AIM2020-RealSR
-Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
+Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3). We propose:
+* [Two models](https://github.com/HolmesShuan/AIM2020-RealSR#1-basic-models-)
+* [A new loss function](https://github.com/HolmesShuan/AIM2020-RealSR#43-clipl1-loss-)
+* A new self-ensemble method
 
 ## 1. Basic Models :
 Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained on different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
