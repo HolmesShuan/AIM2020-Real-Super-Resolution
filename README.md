@@ -45,6 +45,7 @@ We release all our training scripts to help reproduce our results and hopefully 
 ```
 
 ## 4. Dataset :
+### 4.1 Washed Dataset :
 According to this [issue](https://competitions.codalab.org/forums/21376/3953/):
 > I found that many photos in the training dataset are not pixel-wise aligned. Actually, there are different types of misalignment: camera shift, moving objects (e.x. trees, grass).
 
@@ -59,7 +60,7 @@ Dataset | Original number of images | Ours | Clean Image ID Download Link
 x3 | 19000 | 18643 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x3_clean_img_id.txt)
 x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x4_clean_img_id.txt)
 
-### 4.1 ClipL1 Loss :
+### 4.2 ClipL1 Loss :
 To solve the noisy data problem, we propose a new loss function for CNN-based low-level computer vision tasks. As the name implies, ClipL1 Loss combines Clip function and L1 loss. `self.clip_min` sets the gradients of well-trained pixels to zeros and `clip_max` works as a noise filter. 
 ```python
 import torch
