@@ -107,6 +107,12 @@ To alleviate the chromatism problem, we use self-ensemble and model ensemble at 
 
 <img src="./img/cmp2.jpg" width="500" height="225" />
 
+We further propose a new ensemble method called `shave-ensemble`. The motivation is to hide the seam artifact caused by chop forward propagation:
+
+<img src="./img/cmp3.jpg" width="500" height="225" />
+
+Please refer to `model/__init__.py` Line59 for more information.
+
 ## 6. Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
 
