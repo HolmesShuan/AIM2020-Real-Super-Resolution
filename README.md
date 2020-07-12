@@ -2,7 +2,7 @@
 Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
 
 ## 1. Basic Models :
-Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained with different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
+Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained on different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
 
 <img src="./img/OADDet.jpg" width="500" height="250" />
 
@@ -10,7 +10,7 @@ Our core modules are heavily borrowed from [Inception](https://arxiv.org/pdf/140
 
 
 ## 2. Environment :
-We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 1800 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
+We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
 ```C
 GCC==7.5.0
 python==3.7.3
@@ -34,14 +34,27 @@ CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 1
 ### 3.3 Training Scripts:
 We release all our training scripts to help reproduce our results and hopefully the following methods may benefit from our works.
 #### 3.3.1 OADDetv1
+Trained on original AIM x2 dataset; Finetuned on washed AIM x2.
 ```
-
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save DIV2K_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 100-200 --epochs 300
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 2 --split_batch 1 --lr 5e-5 --decay 150-300-450-600 --epochs 600 --pre_train ../experiment/DIV2K_DDet_x2/model/model_best.pt --save_models --chop
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_SSIM_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 420 --n_threads 4 --split_batch 1 --lr 1e-6 --decay 100 --epochs 100 --pre_train ../experiment/AIM_DDet_x2/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
 #### 3.3.2 OADDetv2
+Trained on washed AIM x2 dataset; Fine-tuned on washed AIM x2+x3 dataset and washed x2 dataset.
 ```
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save DIV2K_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 30 --epochs 30
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 2 --split_batch 1 --lr 5e-5 --decay 100-200-300 --epochs 350 --pre_train ../experiment/DIV2K_DDet_x2/model/model_best.pt --save_models --chop
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_L1_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/AIM_washed_Large --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 4 --split_batch 1 --lr 5e-5 --decay 100-200-300 --epochs 350 --pre_train ../experiment/AIM_DDet_x2/model/model_latest.pt --chop --loss 1.0*L1
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_SSIM_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 400 --n_threads 4 --split_batch 1 --lr 1e-5 --decay 100 --epochs 100 --pre_train ../experiment/AIM_DDet_x2_L1_finetune/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
 #### 3.3.3 Deep-OADDet
+Trained on washed AIM x2 dataset; Fine-tuned on washed AIM x2+x3 dataset and washed x2 dataset.
 ```
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save DIV2K_WDDet_x2 --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 30 --epochs 30
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save AIM_WDDet_x2 --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 2 --split_batch 1 --lr 5e-5 --decay 100-200-300 --epochs 350 --pre_train ../experiment/DIV2K_WDDet_x2/model/model_best.pt --save_models --chop
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save AIM_WDDet_x2_L1_finetune --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/AIM_washed_Large --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 4 --split_batch 1 --lr 5e-5 --decay 100-200-300 --epochs 350 --pre_train ../experiment/AIM_WDDet_x2/model/model_latest.pt --chop --loss 1.0*L1
+CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save AIM_WDDet_x2_SSIM_finetune --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 400 --n_threads 4 --split_batch 1 --lr 1e-5 --decay 100 --epochs 100 --pre_train ../experiment/AIM_WDDet_x2_L1_finetune/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
 
 ## 4. Dataset :
@@ -60,7 +73,10 @@ Dataset | Original number of images | Ours | Clean Image ID Download Link
 x3 | 19000 | 18643 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x3_clean_img_id.txt)
 x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x4_clean_img_id.txt)
 
-### 4.2 ClipL1 Loss :
+### 4.2 Washed x2+x3 Dataset :
+
+
+### 4.3 ClipL1 Loss :
 To solve the noisy data problem, we propose a new loss function for CNN-based low-level computer vision tasks. As the name implies, ClipL1 Loss combines Clip function and L1 loss. `self.clip_min` sets the gradients of well-trained pixels to zeros and `clip_max` works as a noise filter. 
 ```python
 import torch
