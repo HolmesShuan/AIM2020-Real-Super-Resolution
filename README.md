@@ -82,7 +82,7 @@ Though AIM2020 x2 dataset contains 19K real LR/HR pairs, our models still suffer
 
 This setting contributes to better visualization results on hard samples. Left subfigure is only trained on x2 washed and right subfigure is trained on x2+x3. However, this training strategy results in a chromatism problem. 
 
-<img src="./img/cmp.jpg" width="500" height="225" />
+<img src="./img/cmp.jpg" width="700" height="315" />
 
 ### 4.3 ClipL1 Loss :
 To solve the noisy data problem, we propose a new loss function for CNN-based low-level computer vision tasks. As the name implies, ClipL1 Loss combines Clip function and L1 loss. `self.clip_min` sets the gradients of well-trained pixels to zeros and `clip_max` works as a noise filter. 
@@ -105,7 +105,7 @@ class ClipL1(nn.Module):
 ## 5. Model Ensemble :
 To alleviate the chromatism problem, we use self-ensemble and model ensemble at inference time. Left subfigure is ensembled and right subfigure is a single model baseline.
 
-<img src="./img/cmp2.jpg" width="500" height="225" />
+<img src="./img/cmp2.jpg" width="700" height="315" />
 
 We further propose a new ensemble method called `shave-ensemble`. The motivation is to hide the seam artifact caused by chop forward propagation:
 
