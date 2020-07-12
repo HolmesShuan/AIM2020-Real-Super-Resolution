@@ -1,2 +1,37 @@
-# AIM2020-RealSR-x2
-Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3)
+# AIM2020-RealSR
+Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
+
+## Basic Model
+Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained with different datasets (further details in the following section). 
+
+## Environment
+We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 1800 GPU hours on V100.
+
+## How to use ?
+### Reproduce x2 test dataset results:
+```
+CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_VAL_model_latest --test_only --dir_data /nfsdata1/home/hexiangyu/RealSR_X2_Full_Valid_New/ --pre_train /nfsdata1/home/hexiangyu/EDSR-PyTorch-legacy-1.1.0/experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_1.pt --n_GPUs 1 --chop --chop-size 410 --shave-size 10
+```
+### Test on your own images:
+
+### Training Scripts:
+We release all our training scripts to better reproduce our results and hopefully the folloing methods may benefit from our works.
+#### OADDetv1
+```
+
+```
+#### OADDetv2
+```
+```
+#### Deep-OADDet
+```
+```
+
+## Dataset
+Notice that the released dataset is unsatisfactory. According to this [issue](https://competitions.codalab.org/forums/21376/3953/)
+> I found that many photos in the training dataset are not pixel-wise aligned. Actually, there are different types of misalignment: camera shift, moving objects (e.x. trees, grass).
+
+
+
+## Acknowledgement
+We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
