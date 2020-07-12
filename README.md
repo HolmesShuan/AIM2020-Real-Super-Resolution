@@ -109,7 +109,7 @@ To alleviate the chromatism problem, we use self-ensemble and model ensemble at 
 
 We further propose a new ensemble method called `shave-ensemble`. The motivation is to hide the seam artifact caused by chop forward propagation:
 
-<img src="./img/cmp3.jpg" width="500" height="225" />
+<img src="./img/cmp3.jpg" width="350" height="450" />
 
 Please refer to `model/__init__.py` Line59 for more information.
 
