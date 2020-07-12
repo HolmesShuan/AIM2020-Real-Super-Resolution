@@ -1,11 +1,23 @@
 # AIM2020-RealSR
 Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
 
-## Basic Model
-Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained with different datasets (further details in the following section). 
+## Basic Models :
+Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained with different datasets (further details in the [Dataset section](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
 
-## Environment
-We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 1800 GPU hours on V100.
+## Environment :
+We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 1800 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
+```C
+GCC==7.5.0
+python==3.7.3
+torch==1.1.0
+torchvision==0.2.2.post3
+CUDA==9.0.176
+imageio==2.5.0
+numpy==1.16.3
+opencv-contrib-python==4.3.0.36
+scikit-image==0.15.0
+scipy==1.2.1
+```
 
 ## How to use ?
 ### Reproduce x2 test dataset results:
@@ -27,11 +39,20 @@ We release all our training scripts to better reproduce our results and hopefull
 ```
 ```
 
-## Dataset
+## Dataset :
 Notice that the released dataset is unsatisfactory. According to this [issue](https://competitions.codalab.org/forums/21376/3953/)
 > I found that many photos in the training dataset are not pixel-wise aligned. Actually, there are different types of misalignment: camera shift, moving objects (e.x. trees, grass).
 
+> However, looking at the dataset, I found that there are very large shifts in some crops. For example, 000012, 000016, 000018, 000021.
+There is also a color mismatch sometimes between LR and HR: for example 000022.
 
+it seems that the official dataset could be noisy. Therefore, we manually washed x2/x3/x4 datasets to obtain three subsets. There are about 300 damaged image pairs in each dataset. The washed datasets are now public available.
 
-## Acknowledgement
+Dataset | Original number of images | Ours | Clean Image ID Download Link
+------------ | ------------- | ------------- |  ------------
+x2 | 19000 | 18475 | 
+x3 | 19000 | 18643 |
+x4 | 19000 | 18652 |
+
+## Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
