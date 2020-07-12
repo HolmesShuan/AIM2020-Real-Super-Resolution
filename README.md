@@ -1,8 +1,5 @@
 # AIM2020-RealSR
-Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3). We propose:
-* [Two models](https://github.com/HolmesShuan/AIM2020-RealSR#1-basic-models-)
-* [A new loss function](https://github.com/HolmesShuan/AIM2020-RealSR#43-clipl1-loss-)
-* A new self-ensemble method
+Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
 
 ## 1. Basic Models :
 Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained on different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
@@ -83,7 +80,7 @@ x4 | 19000 | 18652 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/m
 ### 4.2 Washed x2+x3 Dataset (AIM_washed_Large) :
 Though AIM2020 x2 dataset contains 19K real LR/HR pairs, our models still suffer from overfishing. In light of this, we use x3 LR/HR pairs to fine-tune x2 models. Specifically, we downsample x3 HR images to x2 size (i.e., `HR_img.resize(H//3*2, W//3*2)`), which generates a larger AIM x2 dataset with 37118 images, namely `AIM_washed_Large`. 
 
-This setting contributes to better visualization results on hard samples. Left subfigure is only trained on x2 washed and right subfigure is trained on x2+x3. However, the side-effect is a slight chromatism problem. 
+This setting contributes to better visualization results on hard samples. Left subfigure is only trained on x2 washed and right subfigure is trained on x2+x3. However, this training strategy results in a chromatism problem. 
 
 <img src="./img/cmp.jpg" width="500" height="225" />
 
@@ -105,10 +102,15 @@ class ClipL1(nn.Module):
         return loss
 ```
 
-## 5. Acknowledgement :
+## 5. Model Ensemble :
+To alleviate the chromatism problem, we use self-ensemble and model ensemble at inference time. Left subfigure is ensembled and right subfigure is a single model baseline.
+
+<img src="./img/cmp2.jpg" width="500" height="225" />
+
+## 6. Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
 
-## 6. Cite :
+## 7. Cite :
 If you find this repository useful, please cite:
 ```
 @misc{AIM2020RealSR,
