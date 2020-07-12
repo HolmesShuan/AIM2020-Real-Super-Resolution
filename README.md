@@ -1,5 +1,5 @@
 # AIM2020-RealSR
-Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3). **SSIM Rank 3rd** at the end of Development phase (2020.7.10).
+Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3). **SSIM Rank 3rd** at the end of the Development phase (2020.7.10).
 
 ## 1. Basic Models :
 Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained on different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
@@ -71,7 +71,7 @@ There is also a colour mismatch sometimes between LR and HR: for example 000022.
 
 it seems that the official dataset is unsatisfactory. Therefore, we manually washed x2/x3/x4 datasets to obtain three subsets. There are about 300 damaged image pairs in each original dataset. The washed datasets are now publicly available:
 
-Dataset | Original number of images | Ours | Clean Image ID Download Link
+Original Dataset | Original number of images | Ours | Clean Image ID Download Link
 ------------ | ------------- | ------------- |  ------------
 [x2](https://1drv.ms/u/s!AtE0puUOX2nNgW9bGUzZtoRksxwP?e=dP5yMD) | 19000 | 18475 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x2_clean_img_id.txt)
 [x3](https://1drv.ms/u/s!AtE0puUOX2nNgXA8gJT6YRTBhY7x?e=edRCqz) | 19000 | 18643 | [Link](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/washed_dataset/x3_clean_img_id.txt)
