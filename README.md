@@ -31,6 +31,9 @@ scipy==1.2.1
 CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_VAL_model_latest --test_only --dir_data /nfsdata1/home/hexiangyu/RealSR_X2_Full_Valid_New/ --pre_train /nfsdata1/home/hexiangyu/EDSR-PyTorch-legacy-1.1.0/experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_1.pt --n_GPUs 1 --chop --chop-size 410 --shave-size 10
 ```
 ### 3.2 Test on your own images:
+```
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 500 --shave-size 100
+```
 
 ### 3.3 Training Scripts:
 We release all our training scripts to help reproduce our results and hopefully, the following methods may benefit from our works.
