@@ -4,8 +4,10 @@ Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3).
 ## 1. Basic Models :
 Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained with different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
 
-Our core modules are heavily borrowed from [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as less attention modules, skip connections and LeakyReLU.
 <img src="./img/OADDet.jpg" width="500" height="250" />
+
+Our core modules are heavily borrowed from [Inception](https://arxiv.org/pdf/1409.4842.pdf) and [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) with minor improvements, such as less attention modules, skip connections and LeakyReLU.
+
 
 ## 2. Environment :
 We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 1800 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
