@@ -111,7 +111,9 @@ We further propose a new ensemble method called `shave-ensemble`. The motivation
 
 <img src="./img/cmp3.jpg" width="350" height="450" />
 
-Please refer to `model/__init__.py` Line59 for more information.
+Please refer to `model/__init__.py` Line59 for more information. Different color boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa.
+
+<img src="./img/shave-ensemble.jpg" width="500" height="360" />
 
 ## 6. Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE_search) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
