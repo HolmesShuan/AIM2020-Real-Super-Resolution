@@ -1,5 +1,5 @@
 # AIM2020-RealSR
-Our solution to AIM2020 Real Image Super-Resolution Challenge (x2/x3). **x2 SSIM Rank 3rd** at the end of the Development phase (2020.7.10).
+Our solution to AIM2020 Real Image Super-Resolution Challenge (x2). **x2 SSIM Rank 3rd** at the end of the Development phase (2020.7.10).
 
 ## 1. Basic Models :
 Our solution consists of three basic models (**model ensemble**): OADDetv1, OADDetv2 and Deep-OADDet. OADDetv1 and v2 shares the same architecture yet trained on different datasets (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
@@ -107,11 +107,11 @@ To alleviate the chromatism problem, we use self-ensemble and model ensemble at 
 
 <img src="./img/cmp2.jpg" width="700" height="315" />
 
-We further propose a new ensemble method called `shave-ensemble`. The motivation is to hide the seam artifact caused by chop forward propagation:
+We further propose a new ensemble method called `crop-ensemble`. The motivation is to hide the seam artifact caused by cropping input images:
 
 <img src="./img/cmp3.jpg" width="350" height="450" />
 
-Please refer to `model/__init__.py` Line59 for more information. Different color boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa.
+Please refer to `model/__init__.py` Line59 for more information. Different colors of boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa.
 
 <img src="./img/shave-ensemble.jpg" width="500" height="360" />
 
