@@ -14,6 +14,7 @@ Our core modules are heavily borrowed from [DDet](https://github.com/ykshi/DDet)
 We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
 ```C
 DRAM>=32GB
+Pillow==6.0.0
 GCC==7.5.0
 python==3.7.3
 torch==1.1.0
