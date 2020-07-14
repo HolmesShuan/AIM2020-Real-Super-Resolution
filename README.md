@@ -115,7 +115,7 @@ We further propose a new ensemble method called `crop-ensemble`. The motivation 
 
 <img src="./img/cmp3.jpg" width="350" height="450" />
 
-Please refer to `model/__init__.py` Line59 for more information. Different colors of boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa.
+Please refer to `model/__init__.py` Line59 for more information. Different colors of boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa. In our experiments, **crop-ensemble noticeably improves the performance and the more the better!**   
 
 <img src="./img/shave-ensemble.jpg" width="500" height="360" />
 
