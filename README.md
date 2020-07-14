@@ -109,6 +109,8 @@ To alleviate the chromatism problem, we use self-ensemble and model ensemble at 
 
 <img src="./img/cmp2.jpg" width="700" height="315" />
 
+### 5.1 Crop-ensemble
+
 We further propose a new ensemble method called `crop-ensemble`. The motivation is to hide the seam artifact caused by cropping input images:
 
 <img src="./img/cmp3.jpg" width="350" height="450" />
