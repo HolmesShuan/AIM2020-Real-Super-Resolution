@@ -2,7 +2,7 @@
 Our solution to AIM2020 Real Image Super-Resolution Challenge (x2). **x2 SSIM Rank 3rd** at the end of the Development phase (2020.7.10). **We propose a new "[crop-ensemble](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#51-crop-ensemble)" and it is compatible with model-ensemble and self-ensemble to achieve higher performances.**
 
 ## 1. Basic Models :
-Our solution consists of four basic models (**model ensemble**): OADDet, Deep-OADDet, original EDSR and original DRLN. (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
+Our solution consists of four basic models (**model ensemble**): OADDet, Deep-OADDet, original [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch) and original [DRLN](https://github.com/saeed-anwar/DRLN). (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
 
 <img src="./img/OADDet.jpg" width="500" height="250" />
 
@@ -146,7 +146,7 @@ Please refer to `model/__init__.py` Line59 for more information. Different color
 <img src="./img/shave-ensemble.jpg" width="500" height="360" />
 
 ## 6. Acknowledgement :
-We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
+We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DRLN](https://github.com/saeed-anwar/DRLN), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
 
 ## 7. Cite :
 If you find this repository useful, please cite:
