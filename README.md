@@ -11,20 +11,21 @@ Our core modules are heavily borrowed from [DDet](https://github.com/ykshi/DDet)
 <img src="./img/OADDet_Network.jpg" width="640" height="360" />
 
 ## 2. Environment :
-We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. The detailed requirements are as follow:
+We conduct all experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB) including training (12 GPUs) and testing (4 GPUs). The total training time is about 2000 GPU hours on V100. It takes about 30GB DRAM during training. We have tested our codes in the following environment (**Please install the same version of torch,CUDA,numpy,Pillow,etc. Otherwise the results may different from ours.**):
 ```C
+# For testing on 2080Ti
 DRAM>=32GB
-Pillow==6.0.0
-GCC==7.5.0
-python==3.7.3
-torch==1.1.0
-torchvision==0.2.2.post3
+Pillow==7.1.2
+GCC==4.8.5
+python==3.6.10
+torch==1.5.1
+torchvision==0.6.0
 CUDA==9.0.176
-imageio==2.5.0
-numpy==1.16.3
+imageio==2.8.0
+numpy==1.18.5
 opencv-contrib-python==4.3.0.36
-scikit-image==0.15.0
-scipy==1.2.1
+scikit-image==0.17.2
+scipy==1.5.0
 ```
 
 ## 3. How to use ?
