@@ -71,8 +71,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save AIM_W
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save AIM_WDDet_x2_SSIM_finetune --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 400 --n_threads 4 --split_batch 1 --lr 1e-5 --decay 100 --epochs 100 --pre_train ../experiment/AIM_WDDet_x2_L1_finetune/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
 
-#### 3.3.3 EDSR
-Pretrained EDSR model is used to train on washed AIM X2 dataset;Fine-tuned on washed AIM X2 dataset
+#### 3.3.3 EDSR (40.37M)
+Pre-trained EDSR model is used to train on washed AIM x2 dataset; Fine-tuned on washed AIM x2 dataset.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --template EDSR--pre_train ../../pre_train/edsr_x2.pt --save AIM_EDSR_X2 --data_train AIM --data_test AIM --n_GPUs 4 --batch_size 24 --patch_size 128 --scale 2 --decay 150 --lr 1e-4 --loss 1*L1 --epoch 300
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --template EDSR--pre_train ../experiment/AIM_EDSR_X2/model/model_best_2.pt --save AIM_EDSR_X2_finetune --data_train AIM --data_test AIM --n_GPUs 4 --batch_size 16 --patch_size 200 --scale 2 --decay 150 --lr 1e-5 --loss 1*L1 --epoch 300
@@ -80,8 +80,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --template EDSR--pre_train ../experi
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --template EDSR--pre_train ../experiment/AIM_EDSR_X2_finetune /model/model_best_2.pt --save AIM_EDSR_X2_finetune --data_train AIM --data_test AIM --n_GPUs 4 --batch_size 16 --patch_size 200 --scale 2 --decay 150 --lr 1e-7 --loss 1*L1 --epoch 100
 ```
 
-#### 3.3.4 DRLN
-Pretrained DRLN model is used to train on washed AIM X2 dataset;Fine-tuned on washed AIM X2 dataset
+#### 3.3.4 DRLN (34.43M)
+Pre-trained DRLN model is used to train on washed AIM x2 dataset; Fine-tuned on washed AIM x2 dataset.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DRLN--pre_train ../../pre_train/drln_x2.pt --save AIM_DRLN_X2 --data_train AIM --data_test AIM --n_GPUs 4 --batch_size 24 --patch_size 128 --scale 2 --decay 150 --lr 1e-4 --loss 1*L1 --epoch 300
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DRLN--pre_train ../experiment/AIM_DRLN_X2 /model/model_best_2.pt --save AIM_DRLN_X2_finetune --data_train AIM --data_test AIM --n_GPUs 4 --batch_size 16 --patch_size 200 --scale 2 --decay 150 --lr 1e-5 --loss 1*L1 --epoch 300
