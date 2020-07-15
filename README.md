@@ -32,6 +32,16 @@ scipy==1.2.1
 ```shell
 CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_VAL_model_latest --test_only --dir_data /nfsdata1/home/hexiangyu/RealSR_X2_Full_Valid_New/ --pre_train /nfsdata1/home/hexiangyu/EDSR-PyTorch-legacy-1.1.0/experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_1.pt --n_GPUs 1 --chop --chop-size 410 --shave-size 10
 ```
+##### If you encounter `out of memory` problem, please manually divide the testing dataset (60 images) into several subsets then run our models on each of them separately. E.g.,
+```shell
+# subset1 contains 000-019.png
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART1 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results 
+# subset2 contains 020-039.png
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART2 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results
+# subset3 contains 040-059.png
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART3 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results 
+```
+
 ### 3.2 Test on your own images:
 ```shell
 CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 500 --shave-size 100
