@@ -47,6 +47,10 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats
 ```shell
 CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 500 --shave-size 100
 ```
+For better results, you are encouraged to use self-ensemble and crop-ensemble to enhance SR images. 
+```shell
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50
+```
 
 ### 3.3 Training Scripts:
 We release all our training scripts to help reproduce our results and hopefully, the following methods may benefit from our works.
