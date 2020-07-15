@@ -20,7 +20,7 @@ GCC==4.8.5
 python==3.6.10
 torch==1.5.1
 torchvision==0.6.0
-CUDA==9.0.176
+CUDA==10.2.89
 imageio==2.8.0
 numpy==1.18.5
 opencv-contrib-python==4.3.0.36
