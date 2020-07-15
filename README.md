@@ -2,7 +2,7 @@
 Our solution to AIM2020 Real Image Super-Resolution Challenge (x2). **x2 SSIM Rank 3rd** at the end of the Development phase (2020.7.10). **We propose a new "[crop-ensemble](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#51-crop-ensemble)" and it is compatible with model-ensemble and self-ensemble to achieve higher performances.**
 
 ## 1. Basic Models :
-Our solution consists of four basic models (**model ensemble**): OADDet, Deep-OADDet, original EDSR and original LRN. (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
+Our solution consists of four basic models (**model ensemble**): OADDet, Deep-OADDet, original EDSR and original DRLN. (further details in [Training Scripts](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#33-training-scripts) and [Dataset](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#dataset)). 
 
 <img src="./img/OADDet.jpg" width="500" height="250" />
 
