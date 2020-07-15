@@ -54,14 +54,14 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats
 
 ### 3.3 Training Scripts:
 We release all our training scripts to help reproduce our results and hopefully, the following methods may benefit from our works.
-#### 3.3.1 OADDetv1
+#### 3.3.1 OADDetv1 (16.5M)
 Trained on original AIM x2 dataset; Finetuned on washed AIM x2.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save DIV2K_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 100-200 --epochs 300
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 2 --split_batch 1 --lr 5e-5 --decay 150-300-450-600 --epochs 600 --pre_train ../experiment/DIV2K_DDet_x2/model/model_best.pt --save_models --chop
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_SSIM_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 420 --n_threads 4 --split_batch 1 --lr 1e-6 --decay 100 --epochs 100 --pre_train ../experiment/AIM_DDet_x2/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
-#### 3.3.2 OADDetv2
+#### 3.3.2 OADDetv2 (16.5M)
 Trained on washed AIM x2 dataset; Fine-tuned on washed AIM x2+x3 dataset and washed x2 dataset.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save DIV2K_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 30 --epochs 30
@@ -69,7 +69,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_D
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_L1_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 32 --dir_data /data/AIM_washed_Large --ext bin --n_GPUs 4 --reset --patch_size 128 --n_threads 4 --split_batch 1 --lr 5e-5 --decay 100-200-300 --epochs 350 --pre_train ../experiment/AIM_DDet_x2/model/model_latest.pt --chop --loss 1.0*L1
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save AIM_DDet_x2_SSIM_finetune --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train AIM --data_test AIM --batch_size 4 --dir_data /data/AIM_washed --ext bin --n_GPUs 4 --reset --patch_size 400 --n_threads 4 --split_batch 1 --lr 1e-5 --decay 100 --epochs 100 --pre_train ../experiment/AIM_DDet_x2_L1_finetune/model/model_latest.pt --chop --loss 20.0*SSIM
 ```
-#### 3.3.3 Deep-OADDet
+#### 3.3.3 Deep-OADDet (21.9M)
 Trained on washed AIM x2 dataset; Fine-tuned on washed AIM x2+x3 dataset and washed x2 dataset.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model WDDet --scale 2 --save DIV2K_WDDet_x2 --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 30 --epochs 30
