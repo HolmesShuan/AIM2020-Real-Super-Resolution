@@ -11,7 +11,7 @@ Our core modules of OADDets are heavily borrowed from [DDet](https://github.com/
 <img src="./img/OADDet_Network.jpg" width="640" height="360" />
 
 ## 2. Environment :
-We conduct experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB x 12). The total training time is about 2000 GPU hours on V100. It takes about 32GB DRAM during training. We have tested our codes in the following environment (**Please install the same version of torch,CUDA,numpy,Pillow,etc. Otherwise the results may different from ours.**):
+We conduct experiments on Nvidia GPUs (NVIDIA Tesla V100 SXM2 16GB x 12). The total training time is about 2000 GPU hours on V100. It takes about 32GB DRAM during training. We have tested our codes in the following environment (**Please install the same version of torch,CUDA,numpy,Pillow,etc. Otherwise the results may differ from ours.**):
 ```C
 # For testing on 2080Ti
 DRAM>=32GB
@@ -54,7 +54,7 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats
 
 ### 3.3 Training Scripts:
 We release all our training scripts to help reproduce our results and hopefully, the following methods may benefit from our works.
-#### 3.3.1 OADDetv1 (16.5M)
+#### 3.3.1 OADDet (16.5M)
 Trained on original AIM x2 dataset; Finetuned on washed AIM x2.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python main.py --model DDDet --scale 2 --save DIV2K_DDet_x2 --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_train DIV2K --data_test DIV2K --batch_size 32 --dir_data /data/ --ext bin --n_GPUs 4 --reset --patch_size 96 --n_threads 4 --split_batch 1 --lr 1e-4 --decay 100-200 --epochs 300
