@@ -36,20 +36,20 @@ CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 1
 ##### If you encounter `out of memory` problem, please manually divide the testing dataset (60 images) into several subsets then run our models on each of them separately. E.g.,
 ```shell
 # subset1 contains 000-019.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART1 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results 
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART1 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results 
 # subset2 contains 020-039.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART2 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART2 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results
 # subset3 contains 040-059.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART3 --pre_train ../experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_21.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50 --save_results 
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART3 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results 
 ```
 
 ### 3.2 Test on your own images:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 500 --shave-size 100
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet/model/AIM_DDET_X2.pt --n_GPUs 2 --chop --chop-size 500 --shave-size 100
 ```
 For better results, you are encouraged to use self-ensemble and crop-ensemble to enhance SR images. 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet_x2_4th_so_far_best_Large_Dataset_SSIM_Finetune/model/model_10.pt --n_GPUs 2 --chop --chop-size 600 500 400 300 200 --shave-size 50 50 50 50 50
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet/model/AIM_DDET_X2.pt --n_GPUs 2 --chop --chop-size 600 600 300 300 --shave-size 100 50 100 50 --self_ensemble
 ```
 
 ### 3.3 Training Scripts:
@@ -144,6 +144,13 @@ We further propose a new ensemble method called `crop-ensemble`. The motivation 
 Please refer to `model/__init__.py` Line59 for more information. Different colors of boxes indicate different crop sizes. Small boxes cover the seams between predicted large image patches and vice versa. In our experiments, **crop-ensemble noticeably improves the performance and the more the better!**   
 
 <img src="./img/shave-ensemble.jpg" width="500" height="360" />
+
+Here we list the common settings:
+```python
+--chop-size 600 600 600 --shave-size 100 50 10
+--chop-size 600 300 --shave-size 100 100
+--chop-size 600 600 600 300 300 300 --shave-size 100 50 10 100 50 10
+```
 
 ## 6. Acknowledgement :
 We would like to thank [EDSR](https://github.com/thstkdgus35/EDSR-PyTorch), [DRLN](https://github.com/saeed-anwar/DRLN), [DDet](https://github.com/ykshi/DDet), [Pytorch-ssim](https://github.com/Po-Hsun-Su/pytorch-ssim), [CBAM](https://github.com/Jongchan/attention-module), [CGD](https://github.com/HolmesShuan/Compact-Global-Descriptor) and [RealSR](https://github.com/Alan-xw/RealSR) for sharing their codes. Our methods are built on those inspiring works. We still borrow some ideas from [NTIRE2019](https://openaccess.thecvf.com/CVPR2019_workshops/CVPR2019_NTIRE) leading methods, such as [OANet](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Du_Orientation-Aware_Deep_Neural_Network_for_Real_Image_Super-Resolution_CVPRW_2019_paper.pdf) and [KPN](https://github.com/csjcai/RealSR). We appreciate the tremendous efforts of previous methods. 
