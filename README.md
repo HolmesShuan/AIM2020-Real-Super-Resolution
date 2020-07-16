@@ -29,9 +29,18 @@ scipy==1.5.0
 ```
 
 ## 3. How to use ?
+Please first download the pre-trained models and move all of them into `./experiment` dir. Then, run the following scripts in the `./src` directory.
+
+Model | Link to pre-trained model
+------------ | ------------- 
+OADDet | [Link](https://pan.cstcloud.cn/s/QogthNSWTuo) (code: lriu)
+Deep-OADDet | [Link](https://pan.cstcloud.cn/s/CmwQfREEQk) (code: 3g8u)
+EDSR | [Link](https://pan.cstcloud.cn/s/oXcaoOOuQQ) (code: h7a7)
+DRLN | [Link](https://pan.cstcloud.cn/s/vG9WQ0LgRIE) (code: 6fpg)
+
 ### 3.1 Reproduce x2 test dataset results:
 ```shell
-CUDA_VISIBLE_DEVICES=0 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_VAL_model_latest --test_only --dir_data /nfsdata1/home/hexiangyu/RealSR_X2_Full_Valid_New/ --pre_train /nfsdata1/home/hexiangyu/EDSR-PyTorch-legacy-1.1.0/experiment/AIM_WDDet_x2_Large_Dataset_SSIM_Finetune/model/model_1.pt --n_GPUs 1 --chop --chop-size 410 --shave-size 10
+
 ```
 ##### If you encounter `out of memory` problem, please manually divide the testing dataset (60 images) into several subsets then run our models on each of them separately. E.g.,
 ```shell
