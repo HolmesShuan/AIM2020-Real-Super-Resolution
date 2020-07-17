@@ -29,14 +29,14 @@ scipy==1.5.0
 ```
 
 ## 3. How to use ?
-Please first download the pre-trained models and move all of them into `./experiment` dir. Then, run the following scripts in the `./src` directory.
+Please first download the pre-trained models and move all of them into `AIM2020-RealSR/experiment` dir. Then, run the following scripts in the `AIM2020-RealSR/src` directory.
 
-Model | Link to pre-trained model
------------- | ------------- 
-OADDet | [Link](https://pan.cstcloud.cn/s/QogthNSWTuo) (code: lriu)
-Deep-OADDet | [Link](https://pan.cstcloud.cn/s/CmwQfREEQk) (code: 3g8u)
-EDSR | [Link](https://pan.cstcloud.cn/s/oXcaoOOuQQ) (code: h7a7)
-DRLN | [Link](https://pan.cstcloud.cn/s/vG9WQ0LgRIE) (code: 6fpg)
+Model | Link to pre-trained model | -
+------------ | ------------- | ------------- 
+OADDet | [Link](https://pan.cstcloud.cn/s/QogthNSWTuo) (code: lriu) | move to `AIM2020-RealSR/experiment/AIM_DDet/model/`
+Deep-OADDet | [Link](https://pan.cstcloud.cn/s/CmwQfREEQk) (code: 3g8u) | move to `AIM2020-RealSR/experiment/AIM_WDDet/model/`
+EDSR | [Link](https://pan.cstcloud.cn/s/oXcaoOOuQQ) (code: h7a7) | move to `AIM2020-RealSR/experiment/AIM_EDSR/model/`
+DRLN | [Link](https://pan.cstcloud.cn/s/vG9WQ0LgRIE) (code: 6fpg) | move to `AIM2020-RealSR/experiment/AIM_DRLN/model/`
 
 ### 3.1 Reproduce x2 test dataset results:
 ```shell
