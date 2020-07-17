@@ -31,7 +31,7 @@ scipy==1.5.0
 ## 3. How to use ?
 Please first download the pre-trained models and move all of them into `AIM2020-RealSR/experiment` dir. Then, run the following scripts in the `AIM2020-RealSR/src` directory.
 
-Model | Link to pre-trained model | -
+Model | Download Link | -
 ------------ | ------------- | ------------- 
 OADDet | [Link](https://pan.cstcloud.cn/s/QogthNSWTuo) (code: lriu) | move to `AIM2020-RealSR/experiment/AIM_DDet/model/`
 Deep-OADDet | [Link](https://pan.cstcloud.cn/s/CmwQfREEQk) (code: 3g8u) | move to `AIM2020-RealSR/experiment/AIM_WDDet/model/`
