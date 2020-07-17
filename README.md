@@ -154,11 +154,11 @@ Please refer to `model/__init__.py` Line59 for more information. Different color
 
 <img src="./img/shave-ensemble.jpg" width="500" height="360" />
 
-Here we list the common settings:
+Here we list several recommendations:
 ```python
---chop-size 600 600 600 --shave-size 100 50 10
+--chop-size 600 600 600 600 --shave-size 100 100 10 10
 --chop-size 600 300 --shave-size 100 100
---chop-size 600 600 600 300 300 300 --shave-size 100 50 10 100 50 10
+--chop-size 600 300 300 600 --shave-size 100 100 10 10
 ```
 
 ## 6. Acknowledgement :
