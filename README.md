@@ -71,7 +71,7 @@ CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats
 ```
 For better results, you are encouraged to use self-ensemble and crop-ensemble to enhance SR images. 
 ```shell
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet/model/AIM_DDET_X2.pt --n_GPUs 2 --chop --chop-size 600 600 300 300 --shave-size 100 50 100 50 --self_ensemble
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model DDDet --n_resblocks 32 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save Demo_x2_ouptut --test_only --save_results --dir_demo /your/image/dir/ --pre_train ../experiment/AIM_DDet/model/AIM_DDET_X2.pt --n_GPUs 2 --chop --chop-size 600 600 300 300 --shave-size 100 10 10 100 --self_ensemble
 ```
 
 ### 3.3 Training Scripts:
