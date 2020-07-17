@@ -58,11 +58,11 @@ python model_ensemble.py
 ##### If you encounter `out of memory` problem, please manually divide the testing dataset (60 images) into several subsets then run our models on each of them separately. E.g.,
 ```shell
 # subset1 contains 000-019.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART1 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results 
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_demo ../TestLRX2/TestLR_PART1 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 450 450 450 450 --shave-size 80 80 10 10 --save_results
 # subset2 contains 020-039.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART2 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_demo ../TestLRX2/TestLR_PART2 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 450 450 450 450 --shave-size 80 80 10 10 --save_results
 # subset3 contains 040-059.png
-CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test AIM --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_data ../TestLR/TestLR_PART3 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 600 300 --shave-size 50 50 --save_results 
+CUDA_VISIBLE_DEVICES=0,1 python main.py --model WDDet --n_resblocks 40 --n_feats 128 --res_scale 1.0 --data_test Demo --scale 2 --save AIM_WDDet_x2_TEST --test_only --dir_demo ../TestLRX2/TestLR_PART3 --pre_train ../experiment/AIM_WDDet/model/AIM_WDDET_X2.pt --n_GPUs 2 --chop --chop-size 450 450 450 450 --shave-size 80 80 10 10 --save_results
 ```
 
 ### 3.2 Test on your own images:
