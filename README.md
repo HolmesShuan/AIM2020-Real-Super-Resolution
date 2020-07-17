@@ -18,7 +18,7 @@ DRAM>=32GB
 Pillow==7.1.2
 GCC==4.8.5
 python==3.6.10
-torch==1.5.1
+torch==1.5.1 # important
 torchvision==0.6.0
 CUDA==10.2.89
 imageio==2.8.0
