@@ -43,7 +43,7 @@ DRLN | [Link](https://pan.cstcloud.cn/s/vG9WQ0LgRIE) (code: 6fpg) | move to `AIM
 cd ./src
 sh reproduce_testset_results.sh
 ```
-Our testset results can be found [here](https://drive.google.com/file/d/13l4VLD_OtqGGO2U0qZPjm5-U6D-5BJIK/view?usp=sharing).
+Our testset results can be found [here (Google Drive)](https://drive.google.com/file/d/13l4VLD_OtqGGO2U0qZPjm5-U6D-5BJIK/view?usp=sharing). 
 ##### If you encounter `out of memory` problem, please manually divide the testing dataset (60 images) into several subsets then run our models on each of them separately. E.g.,
 ```shell
 # subset1 contains 000-019.png
