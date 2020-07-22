@@ -1,4 +1,4 @@
-# AIM2020-RealSR 
+# AIM2020-RealSR (Team AiAiR, Final Rank 4th, SSIM Rank 3rd)
 Our solution to AIM2020 Real Image x2 Super-Resolution Challenge (co-organized with ECCV2020). **SSIM Rank 3rd** at the end of the Development phase (2020.7.10). **We propose a new "[crop-ensemble](https://github.com/HolmesShuan/AIM2020-RealSR/blob/master/README.md#51-crop-ensemble)" and it is compatible with model-ensemble and self-ensemble to achieve higher performances.**
 
 ## 1. Basic Models :
